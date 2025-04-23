@@ -1,0 +1,19 @@
+https://www.mediafire.com/file/ = FRLink
+sendvid.com/embed/ = SVLink
+ok.ru/videoembed/ = OKLink
+https://mega.nz/embed/ = MALink 
+animefy https://animeify.net/animeify/apis_v4/anime/load_servers.php postMethod body : UserId=0&AnimeId=xSoloLeveling2&Episode=11&AnimeType=SERIES&Token=8cnY80AZSbUCmR26Vku1VUUY4
+||
+UserId=0&AnimeId=xNaruto&Episode=7&AnimeType=SERIES&Token=8cnY80AZSbUCmR26Vku1VUUY4
+||
+UserId=0&AnimeId=xSoloLeveling2&Episode=11&AnimeType=SERIES&Token=8cnY80AZSbUCmR26Vku1VUUY4
+
+header-------------
+https://www.animeparadise.moe/watch/
+Content-Length: body.length
+Content-Type: application/x-www-form-urlencoded
+Expect: 100-continue
+Host: animeify.net
+
+
+https://animeify.net/animeify/apis_v4/anime/load_anime_list_v2.php
