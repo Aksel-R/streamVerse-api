@@ -14,7 +14,7 @@ const urls = ["https://vidlink.pro/movie/",
     EMBED_URL+"/embed/movie/"
   ];
   
-  console.log(urls);
+
   
 
 

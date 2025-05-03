@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const { v4: uuidv4 } = require("uuid");
+const {subscribeOneTokenToTopic} = require("../fireBaseNotificationSystem")
 dotenv.config();
 
 const { addNewUser, loginUser } = require("../module/registerNewUser");
@@ -37,6 +38,7 @@ const registerUser = async (email, password, displayName) => {
 
     await addNewUser(uid, newUser);
     const token = generateToken(newUser.user);
+   
 
     return {
       success: true,
@@ -52,7 +54,7 @@ const registerUser = async (email, password, displayName) => {
   }
 };
 
-const loginUserController = async (email, password) => {
+const loginUserController = async (email, password, notifToken) => {
   try {
     const existingUser = await loginUser(email);
 
@@ -66,6 +68,9 @@ const loginUserController = async (email, password) => {
     }
 
     const token = generateToken(existingUser.user);
+
+
+    
     return {
       success: true,
       token,

@@ -9,6 +9,8 @@ const {
 router.post("/login", async function (req, res) {
   const email = req.body.email;
   const password = req.body.password;
+  
+
 
   // Validate inputs
   if (!email || !password) {
@@ -29,6 +31,7 @@ router.post("/signup", async function (req, res) {
   const email = req.body.email;
   const password = req.body.password;
   const displayName = req.body.displayName;
+  
 
   // Validate inputs for signup
   if (!email || !password || !displayName) {
