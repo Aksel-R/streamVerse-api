@@ -9,6 +9,7 @@ const latestMovieRouter = require('./routes/movies/latestMovie');
 const recommendationsMovies = require('./routes/movies/recommendationsMovies');
 const movieDetails = require("./routes/movies/movieDetails")
 const {subscribeOneTokenToTopic} = require("./fireBaseNotificationSystem")
+const { sendNotificationToTopic } = require("./fireBaseNotificationSystem");
 // const recentEpisodesRouter = require('./routes/anime/recentEpisodes');
 // const searchAnime = require("./routes/anime/searchAnime")
 // const animeDetails = require("./routes/anime/animeDetails")
@@ -65,7 +66,23 @@ res.status(201).send(subscribtion)
 }
 })
 
-app.get('/', getRecentAddedMovies);
+app.get('/notify/:title/:body', async (req, res) => {
+const title = req.params.title
+const body = req.params.body
+
+  try {
+    await sendNotificationToTopic(
+      "streamVerseNotificationSystem",
+      `${title}`,
+       `${body}`
+    );
+    res.send("Notification sent successfully." +title+ ": " +body);
+  } catch (error) {
+    console.error("Error sending notification:", error);
+    res.status(500).send("Failed to send notification.");
+  }
+});
+
 
 app.get('/recently_added', async function(req, res){
 try{
